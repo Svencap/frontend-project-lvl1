@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/cli.js",
   "bin": {
     "brain-games": "bin/brain-games.js"
   },
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Svencap/frontend-project-lvl1/issues"
   },
-  "homepage": "https://github.com/Svencap/frontend-project-lvl1#readme"
+  "homepage": "https://github.com/Svencap/frontend-project-lvl1#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
