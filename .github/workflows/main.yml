@@ -1,5 +1,5 @@
 
-name: My-Github-Action
+name: My-Github-Action1
 
 on:
   push:
