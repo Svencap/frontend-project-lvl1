@@ -1,5 +1,5 @@
 
-name: My-Github-Action1
+name: My-Github-Action
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  my_testing:
     runs-on: ubuntu-latest
 
     steps:
