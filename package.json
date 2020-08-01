@@ -5,7 +5,8 @@
   "main": "src/br-even.js",
   "bin": {
     "brain-even": "bin/brain-even.js",
-    "brain-calc": "bin/brain-calc.js"
+    "brain-calc": "bin/brain-calc.js",
+    "brain-gcd": "bin/brain-gcd.js"
   },
   "type": "module",
   "scripts": {
