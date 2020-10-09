@@ -1,32 +1,27 @@
-import readlineSync from 'readline-sync';
+// import readlineSync from 'readline-sync';
 
-const randomNum = () => Math.floor(Math.random() * Math.floor(100));
+import { greeting, rounds } from './engine.js';
 
-const output = () => {
-  console.log('Welcome to the Brain Games!');
-  const names = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${names}!`);
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no"');
-  return names;
-};
+import randomNum from './randomNumber.js';
 
 const isPrime = (num) => {
   let counter = 0;
-  let result;
   for (let i = 1; i <= num; i += 1) {
     if (num % i === 0) {
       counter += 1;
     }
   }
-  if (counter === 2) {
-    result = 'yes';
-  } else {
-    result = 'no';
-  }
-  return result;
+  return (counter === 2) ? 'yes' : 'no';
 };
 
-const checkAnswer = (name) => {
+const RightAnswer = () => {
+  const min = 1;
+  const max = 100;
+  const question = randomNum(min, max);
+  const answer = isPrime(question);
+  return [question, answer];
+};
+/* const checkAnswer = (name) => {
   let i = 0;
   while (i < 3) {
     const num = randomNum();
@@ -42,9 +37,10 @@ const checkAnswer = (name) => {
   }
   return console.log(`Congratulations, ${name}`);
 };
-
+*/
 const gamePrime = () => {
-  const names = output();
-  checkAnswer(names);
+  // const num = randomNum(1, 100);
+  const name = greeting('Answer "yes" if given number is prime. Otherwise answer "no"');
+  rounds(name, RightAnswer);
 };
 export default gamePrime;

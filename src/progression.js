@@ -1,25 +1,21 @@
-import readlineSync from 'readline-sync';
+// import readlineSync from 'readline-sync';
 
-const getRandomArbitrary = (min, max) => Math.floor(Math.random() * (max - min) + min);
+import { greeting, rounds } from './engine.js';
 
-const randomNum = () => Math.floor(Math.random() * Math.floor(100));
+import randomNum from './randomNumber.js';
+
+// const getRandomArbitrary = (min, max) => Math.floor(Math.random() * (max - min) + min);
+
+// const randomNum = () => Math.floor(Math.random() * Math.floor(100));
 
 const getProgressionTerm = (number, step, i) => number + i * step;
-
-const greeting = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}`);
-  console.log('What number is missing in the progression?');
-  return name;
-};
 
 const progression = () => {
   let result = '';
   let element;
-  const number = randomNum();
-  const step = getRandomArbitrary(1, 10);
-  const hiddenElement = getRandomArbitrary(0, 10);
+  const number = randomNum(1, 100);
+  const step = randomNum(1, 10);
+  const hiddenElement = randomNum(0, 10);
   for (let i = 0; i < 10; i += 1) {
     if (i === hiddenElement) {
       element = `${getProgressionTerm(number, step, i)}`;
@@ -31,11 +27,13 @@ const progression = () => {
   return [result.trim(), element];
 };
 
-const checkAnswer = (name) => {
+/* const checkAnswer = (name) => {
   let z = 0;
   while (z < 3) {
-    const arr = progression();
+    const arr = progression(); // Прогрессия и нужное число (которое нужно сравнить)
     console.log(`Question: ${arr[0]}`);
+    console.log(arr[0]);
+    console.log(arr[1]);
     const answer = readlineSync.question('You answer: ');
     if (arr[1] !== answer) {
       console.log(`${answer} is wrong answer ;(. Correct answer was ${arr[1]}`);
@@ -47,9 +45,10 @@ const checkAnswer = (name) => {
   }
   return console.log(`Congratulations, ${name}`);
 };
+ */
 
 const game = () => {
-  const names = greeting();
-  checkAnswer(names);
+  const name = greeting('What number is missing in the progression?');
+  rounds(name, progression);
 };
 export default game;

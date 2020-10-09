@@ -1,31 +1,21 @@
-import readlineSync from 'readline-sync';
+import randomNum from './randomNumber.js';
 
-const randomNum = () => Math.floor(Math.random() * Math.floor(100));
+import { greeting, rounds } from './engine.js';
 
 const isEven = (number) => number % 2 === 0;
 
-const trueOrFalse = (randomNumber) => {
-  let trueAnswer = '';
-  if (isEven(randomNumber) === true) {
-    trueAnswer += 'yes';
-  } if (isEven(randomNumber) === false) {
-    trueAnswer += 'no';
-  }
-  return trueAnswer;
+const trueOrFalse = () => {
+  const min = 1;
+  const max = 100;
+  const question = randomNum(min, max);
+  const answer = isEven(question) ? 'yes' : 'no'; // Возвращает ответ с которым надо стравнить ответ пользователя
+  return [question, answer];
 };
 
-const out = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  console.log('Answer "yes" if the number is even, otherwise answer "no"');
-  return name;
-};
-
-const numberCheck = (name) => {
+/* const numberCheck = (name) => {
   let i = 0;
   while (i < 3) {
-    const randomNumber = randomNum();
+    const randomNumber = randomNum(0, 100);
     console.log(`Question: ${randomNumber}`);
     const answer = readlineSync.question('You answer: ');
     if (trueOrFalse(randomNumber) !== answer) {
@@ -38,7 +28,9 @@ const numberCheck = (name) => {
   }
   return console.log(`Congratulations, ${name}`);
 };
+ */
 const game = () => {
-  numberCheck(out());
+  const name = greeting('Answer "yes" if the number is even, otherwise answer "no"');
+  rounds(name, trueOrFalse);
 };
 export default game;

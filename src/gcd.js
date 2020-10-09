@@ -1,14 +1,6 @@
-import readlineSync from 'readline-sync';
+import randomNum from './randomNumber.js';
 
-const randomNum = () => Math.floor(Math.random() * Math.floor(100));
-
-const output = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  console.log('Find the greatest common divisor of given numbers');
-  return name;
-};
+import { greeting, rounds } from './engine.js';
 
 const gcd = (a, b) => {
   let firstNum = a;
@@ -32,7 +24,17 @@ const gcd = (a, b) => {
   return result;
 };
 
-const checkAnswer = (name) => {
+const Rightest = () => {
+  const min = 1;
+  const max = 100;
+  const a = randomNum(min, max);
+  const b = randomNum(min, max);
+  const result = gcd(a, b);
+  const question = `${a} ${b}`;
+  return [question, result];
+};
+
+/* const checkAnswer = (name) => {
   let i = 0;
   while (i < 3) {
     const a = randomNum();
@@ -49,9 +51,10 @@ const checkAnswer = (name) => {
   }
   return console.log(`Congratulations, ${name}`);
 };
+ */
 
 const game = () => {
-  const names = output();
-  checkAnswer(names);
+  const name = greeting('Find the greatest common divisor of given numbers');
+  rounds(name, Rightest);
 };
 export default game;
