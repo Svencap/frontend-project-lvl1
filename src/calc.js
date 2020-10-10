@@ -8,12 +8,18 @@ const arrOperations = ['+', '-', '*'];
 
 const calculator = (firstNum, operation, secondNum) => {
   let result = '';
-  if (operation === '+') {
-    result += firstNum + secondNum;
-  } if (operation === '-') {
-    result += firstNum - secondNum;
-  } if (operation === '*') {
-    result += firstNum * secondNum;
+  switch (operation) {
+    case '+':
+      result += firstNum + secondNum;
+      break;
+    case '-':
+      result += firstNum - secondNum;
+      break;
+    case '*':
+      result += firstNum * secondNum;
+      break;
+    default:
+      result = null;
   }
   return result;
 };
@@ -63,3 +69,13 @@ const gameCalc = () => {
   rounds(name, rightTest);
 };
 export default gameCalc;
+
+/* if (operation === '+') {
+  result += firstNum + secondNum;
+} if (operation === '-') {
+  result += firstNum - secondNum;
+} if (operation === '*') {
+  result += firstNum * secondNum;
+}
+return result;
+ */
