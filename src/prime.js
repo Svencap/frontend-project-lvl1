@@ -1,6 +1,6 @@
 // import readlineSync from 'readline-sync';
 
-import { greeting, rounds } from './engine.js';
+import playGame from './engine.js';
 
 import randomNum from './randomNumber.js';
 
@@ -14,7 +14,7 @@ const isPrime = (num) => {
   return (counter === 2) ? 'yes' : 'no';
 };
 
-const RightAnswer = () => {
+const testPrime = () => {
   const min = 1;
   const max = 100;
   const question = randomNum(min, max);
@@ -39,8 +39,7 @@ const RightAnswer = () => {
 };
 */
 const gamePrime = () => {
-  // const num = randomNum(1, 100);
-  const name = greeting('Answer "yes" if given number is prime. Otherwise answer "no"');
-  rounds(name, RightAnswer);
+  const description = 'Answer "yes" if given number is prime. Otherwise answer "no"';
+  playGame(description, testPrime);
 };
 export default gamePrime;

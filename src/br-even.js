@@ -1,10 +1,10 @@
 import randomNum from './randomNumber.js';
 
-import { greeting, rounds } from './engine.js';
+import playGame from './engine.js';
 
 const isEven = (number) => number % 2 === 0;
 
-const trueOrFalse = () => {
+const testEven = () => {
   const min = 1;
   const max = 100;
   const question = randomNum(min, max);
@@ -30,7 +30,7 @@ const trueOrFalse = () => {
 };
  */
 const game = () => {
-  const name = greeting('Answer "yes" if the number is even, otherwise answer "no"');
-  rounds(name, trueOrFalse);
+  const description = 'Answer "yes" if the number is even, otherwise answer "no"';
+  playGame(description, testEven);
 };
 export default game;

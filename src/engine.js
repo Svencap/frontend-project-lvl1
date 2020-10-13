@@ -15,19 +15,24 @@ const QuestionNum = (num) => {
   return readlineSync.question('You answer: ');
 };
 
-const rounds = (name, trueOrFalse) => {
-  for (let correctAnswer = 0; correctAnswer < 3; correctAnswer += 1) {
-    const [question, answer] = trueOrFalse();
+const rounds = (name, nameOfGame) => {
+  const finishCorrectAnswer = 3;
+  for (let correctAnswer = 0; correctAnswer < finishCorrectAnswer; correctAnswer += 1) {
+    const [question, answer] = nameOfGame();
     const playerAnswer = QuestionNum(question);
     if (playerAnswer !== answer) {
       console.log(`${playerAnswer} is wrong answer ;(. Correct answer was ${answer}`);
-      return console.log(`Let's try again, ${name}`);
+      console.log(`Let's try again, ${name}`);
+      return;
     }
-    if (playerAnswer === answer) {
-      console.log('Correct!');
-    }
+    console.log('Correct!');
   }
-  return console.log(`Congratulations, ${name}`);
+  console.log(`Congratulations, ${name}`);
 };
+// соединить эти функции в одну новую
 
-export { greeting, rounds };
+const playGame = (description, nameOfGame) => {
+  const name = greeting(description);
+  rounds(name, nameOfGame);
+};
+export default playGame;

@@ -1,8 +1,8 @@
 // import readlineSync from 'readline-sync';
 
-import { greeting, rounds } from './engine.js';
-
 import randomNum from './randomNumber.js';
+
+import playGame from './engine.js';
 
 // const getRandomArbitrary = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
@@ -48,7 +48,7 @@ const progression = () => {
  */
 
 const game = () => {
-  const name = greeting('What number is missing in the progression?');
-  rounds(name, progression);
+  const description = 'What number is missing in the progression?';
+  playGame(description, progression);
 };
 export default game;

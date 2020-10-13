@@ -1,6 +1,6 @@
 import randomNum from './randomNumber.js';
 
-import { greeting, rounds } from './engine.js';
+import playGame from './engine.js';
 
 const gcd = (a, b) => {
   let firstNum = a;
@@ -21,17 +21,17 @@ const gcd = (a, b) => {
       } firstNum -= 1;
     }
   }
-  return result;
+  return Number(result);
 };
 
-const Rightest = () => {
+const testGcd = () => {
   const min = 1;
   const max = 100;
   const a = randomNum(min, max);
   const b = randomNum(min, max);
-  const result = gcd(a, b);
+  const answer = String(gcd(a, b));
   const question = `${a} ${b}`;
-  return [question, result];
+  return [question, answer];
 };
 
 /* const checkAnswer = (name) => {
@@ -54,7 +54,7 @@ const Rightest = () => {
  */
 
 const game = () => {
-  const name = greeting('Find the greatest common divisor of given numbers');
-  rounds(name, Rightest);
+  const description = 'Find the greatest common divisor of given numbers';
+  playGame(description, testGcd);
 };
 export default game;
