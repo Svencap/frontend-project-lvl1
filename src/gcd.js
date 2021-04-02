@@ -2,26 +2,12 @@ import randomNum from './randomNumber.js';
 
 import playGame from './engine.js';
 
-const gcd = (a, b) => {
-  let firstNum = a;
-  let secondNum = b;
-  let result = '';
-  if (a > b) {
-    for (let i = 0; i < a; i += 1) {
-      if (a % secondNum === 0 && b % secondNum === 0) {
-        result += secondNum;
-        return result;
-      } secondNum -= 1;
-    }
-  } if (a < b) {
-    for (let z = 0; z < b; z += 1) {
-      if (a % firstNum === 0 && b % firstNum === 0) {
-        result += firstNum;
-        return result;
-      } firstNum -= 1;
-    }
+const gcd = (m, n) => {
+  let i = m;
+  while (m % i !== 0 || n % i !== 0) {
+    i -= 1;
   }
-  return Number(result);
+  return i;
 };
 
 const testGcd = () => {
